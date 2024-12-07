@@ -14,7 +14,6 @@
 # Input: nums = [5], k = 1
 # Output: 5.00000
  
-
 # Constraints:
 
 # n == nums.length
