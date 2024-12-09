@@ -43,3 +43,21 @@ class Solution:
                     buy = sell
             sell+=1
         return maximum_profit
+
+----------------------OR ---------------------------------
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+
+        maximum_profit = 0
+        left = 0
+        right = 1
+        while right < len(prices):
+            current_profit = prices[right] - prices[left]
+            if current_profit < 0:
+                left += 1
+                right -= 1
+            maximum_profit = max(maximum_profit , current_profit)
+            right +=1
+
+        return maximum_profit
+
