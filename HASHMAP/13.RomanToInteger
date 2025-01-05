@@ -1,0 +1,32 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        output = 0
+        ok = 0
+        values = {'C':100,'M':1000,'I':1,'L':50,'V':5,'X':10,'D':500}
+        for i in range(len(s)-1):
+            if ok:
+                ok = 0
+            elif s[i] == 'C' and s[i+1] == 'M':
+                ok = 1
+                output += 900
+            elif s[i] == 'X' and s[i+1] == 'C':
+                ok  = 1
+                output += 90
+            elif s[i] == 'I' and s[i+1] == 'X':
+                ok = 1
+                output += 9
+            elif s[i] == 'I' and s[i+1] == 'V':
+                ok = 1
+                output += 4 
+            elif s[i] == 'X' and s[i+1] == 'L':
+                ok = 1
+                output += 40
+            elif s[i] == 'C' and s[i+1] == 'D':
+                ok = 1
+                output += 400
+            else:
+                output += values[s[i]]
+        if not ok:
+            output += values[s[len(s)-1]]
+        
+        return output
